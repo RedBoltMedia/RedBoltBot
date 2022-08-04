@@ -16,13 +16,12 @@ module.exports = (client) => {
             }
         }
 
-        const clientId = '913909876701405185';
-        const guildId = '736569130391699486';
+        const applicationId = '913909876701405185';
         const rest = new REST({ version: '9'}).setToken(process.env.token);
         try {
             console.log('Started refreshing application (/) commands.');
         
-            await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: client.commandArray });
+            await rest.put(Routes.applicationCommands(applicationId), { body: client.commandArray });
         
             console.log('Successfully reloaded application (/) commands.');
           } catch (error) {
